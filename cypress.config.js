@@ -7,8 +7,12 @@ module.exports = defineConfig({
     baseUrl: 'http://localhost',
     setupNodeEvents(on, config) {
       require('cypress-mochawesome-reporter/plugin')(on)
-// step 2: load Mochawesome reporter plugin
-    },
+},
+  env: {
+  hideCredentials: true,
+  requestMode: true,
+},
+
   },
   fixturesFolder: false,
   video: false,
