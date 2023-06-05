@@ -12,7 +12,12 @@ describe('Create Issue',  () => {
     beforeEach(() => {
         cy.api_deleteProject()
         cy.login()
-        cy.gui_createProject(issue.project)
+        cy.api_createProject(project)
+      .then(response => {
+        expect(response.status).to.equal(201)
+        expect(response.body.name).to.equal(project.name)
+        expect(response.body.description).to.equal(project.description)
+      })
     })
     it('sucessfully', () => {
         cy.gui_createIssue(issue)
