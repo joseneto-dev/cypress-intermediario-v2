@@ -53,4 +53,12 @@ Cypress.Commands.add('api_createIssue', issue => {
       headers: { Authorization: accessToken },
     })
   })
+  Cypress.Commands.add('api_createMilestone', (projectId, milestone) => {
+    cy.request({
+      method: 'POST',
+      url: `/api/v4/projects/${projectId}/milestones`,
+      body: { title: milestone.title },
+      headers: { Authorization: accessToken },
+    })
+  })
   
